@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres jugar conmigo?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .yes-button {
+            background-color: #5cb85c;
+            color: white;
+        }
+        .yes-button:hover {
+            background-color: #4cae4c;
+        }
+        .no-button {
+            background-color: #d9534f;
+            color: white;
+        }
+        .no-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres jugar conmigo?</h1>
+        <button class="yes-button" id="yesButton">Sí</button>
+        <button class="no-button" id="noButton">No</button>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        let noButtonSize = 16;  // initial font size in pixels
+
+        noButton.addEventListener('click', function() {
+            // Increase the size of the "Sí" button
+            yesButton.style.fontSize = (parseInt(window.getComputedStyle(yesButton).fontSize) + 4) + 'px';
+            yesButton.style.padding = (parseInt(window.getComputedStyle(yesButton).paddingTop) + 4) + 'px ' +
+                                      (parseInt(window.getComputedStyle(yesButton).paddingLeft) + 8) + 'px';
+
+            // Decrease the size of the "No" button
+            noButtonSize = Math.max(noButtonSize - 2, 6);  // Minimum font size to keep it readable
+            noButton.style.fontSize = noButtonSize + 'px';
+            noButton.style.padding = (Math.max(parseInt(window.getComputedStyle(noButton).paddingTop) - 1, 2)) + 'px ' +
+                                     (Math.max(parseInt(window.getComputedStyle(noButton).paddingLeft) - 2, 4)) + 'px';
+        });
+
+        yesButton.addEventListener('click', function() {
+            alert('¡Gracias por querer jugar conmigo!');
+        });
+    </script>
+</body>
+</html>
